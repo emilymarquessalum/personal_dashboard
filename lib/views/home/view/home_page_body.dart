@@ -31,34 +31,37 @@ class HomePageBody extends StatelessWidget {
 
           return Padding(
             padding: const EdgeInsets.all(12.0),
-            child: Column(
-              children: [
-                //    Spacer(),
-                Padding(
-                  padding: const EdgeInsets.only(top: 32.0),
-                  child: Text('Home Page - EmilySalum'),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 8.0),
-                  child: Column(
-                    children: [
-                      Visibility(
-                        visible: state is! HomeAddingLinkState,
-                        child: HomeLinksListView(bloc: bloc),
-                      ),
-                      Visibility(
-                        visible: state is HomeAddingLinkState,
-                        child: HomeAddLinkFormView(form: form, bloc: bloc),
-                      ),
-                    ],
+            child: Center(
+              child: Column(
+
+                children: [
+                  //    Spacer(),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 32.0),
+                    child: Text('Home Page - EmilySalum'),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 20.0),
-                  child: NotesListView(),
-                ),
-                //Spacer(),
-              ],
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8.0),
+                    child: Column(
+                      children: [
+                        Visibility(
+                          visible: state is! HomeAddingLinkState,
+                          child: HomeLinksListView(bloc: bloc),
+                        ),
+                        Visibility(
+                          visible: state is HomeAddingLinkState,
+                          child: HomeAddLinkFormView(form: form, bloc: bloc),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20.0),
+                    child: NotesListView(),
+                  ),
+                  //Spacer(),
+                ],
+              ),
             ),
           );
         },

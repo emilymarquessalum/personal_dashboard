@@ -2,7 +2,9 @@
 
 
 
-/*
+import 'package:flutter/cupertino.dart';
+
+/**/
 abstract class StackedViewsEvent {
 }
 
@@ -17,4 +19,4 @@ class RemoveViewEvent extends StackedViewsEvent {
   final Widget view;
 
   RemoveViewEvent({required this.view});
-}*/
+}
