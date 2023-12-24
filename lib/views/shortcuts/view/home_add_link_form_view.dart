@@ -38,12 +38,26 @@ class HomeAddLinkFormView extends StatelessWidget {
               ],
             ),
           ),
-          ElevatedButton(
-              onPressed: () {
-                bloc.add(HomeAddedPathEvent(pathFormData: form.value));
-                form.reset();
-                },
-              child: Text("Confirmar")),
+          Padding(
+            padding: const EdgeInsets.only(top: 12.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ElevatedButton(
+                    onPressed: () {
+                      bloc.add(HomeCancelAddLinkEvent());
+                      form.reset();
+                      },
+                    child: Text("Cancelar")),
+                ElevatedButton(
+                    onPressed: () {
+                      bloc.add(HomeAddedPathEvent(pathFormData: form.value));
+                      form.reset();
+                      },
+                    child: Text("Confirmar")),
+              ],
+            ),
+          ),
         ],
       ),
     );

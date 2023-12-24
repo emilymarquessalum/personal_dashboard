@@ -11,6 +11,10 @@ class HomeAddedPathEvent extends HomeEvent {
   HomeAddedPathEvent({required this.pathFormData});
 }
 
+class HomeCancelAddLinkEvent extends HomeEvent {
+
+}
+
 class HomeAddLinkEvent extends HomeEvent {
 
 }

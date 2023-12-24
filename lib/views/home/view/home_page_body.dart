@@ -1,8 +1,8 @@
-import 'package:personal_dashboard/views/home/bloc/home_bloc.dart';
-import 'package:personal_dashboard/views/home/view/input_text_saved_locally.dart';
-import 'package:personal_dashboard/views/notes/view/notes_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:personal_dashboard/views/home/bloc/home_bloc.dart';
+import 'package:personal_dashboard/views/text_editor/view/home_quill_editor.dart';
+import 'package:personal_dashboard/views/notes/view/notes_list_view.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 import '../../shortcuts/view/home_add_link_form_view.dart';
@@ -33,7 +33,6 @@ class HomePageBody extends StatelessWidget {
             padding: const EdgeInsets.all(12.0),
             child: Center(
               child: Column(
-
                 children: [
                   //    Spacer(),
                   Padding(
@@ -55,10 +54,12 @@ class HomePageBody extends StatelessWidget {
                       ],
                     ),
                   ),
+
                   Padding(
                     padding: const EdgeInsets.only(top: 20.0),
                     child: NotesListView(),
                   ),
+
                   //Spacer(),
                 ],
               ),

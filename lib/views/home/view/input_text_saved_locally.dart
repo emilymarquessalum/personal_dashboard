@@ -1,8 +1,10 @@
+import 'package:common_extensions/extensions/basic_types/for_date_time.dart';
 import 'package:personal_dashboard/data/local_storage.dart';
 import 'package:personal_dashboard/data/session_locator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
+import 'package:personal_dashboard/views/notes/bloc/notes_bloc.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 import '../../notes/models/note.dart';
@@ -36,12 +38,10 @@ class _InputTextSavedLocallyState extends State<InputTextSavedLocally> {
 
   loadText() async {
 
-    String newValue =await GetIt.I.get<LocalStorage>().loadData<String>(
-        widget.input.noteName) ?? "";
     textController.value = TextEditingValue(
-      text: newValue,
+      text: widget.input.noteContent,
       selection: TextSelection.fromPosition(
-        TextPosition(offset: newValue.length),
+        TextPosition(offset:  widget.input.noteContent.length),
       ),
     );
 
@@ -53,25 +53,52 @@ class _InputTextSavedLocallyState extends State<InputTextSavedLocally> {
 
   @override
   Widget build(BuildContext context) {
+
+
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
         Text(widget.input.noteName),
         TextFormField(
           minLines: 4,
-          maxLines: 100,
+         maxLines: 100,
+          //expands: true,
           controller: textController,
           onChanged: (value) async {
 
 
-            GetIt.I.get<LocalStorage>().saveData(
-                widget.input.noteName +
-                    (  await GetIt.I.get<SessionLocator>().getId()
-            ).toString()            , value);
-
+            debugPrint("value: $value");
+            widget.input.noteContent = value;
+            context.read<NotesBloc>().add(
+              UpdateNoteEvent(
+                note: widget.input,
+              ),
+            );
 
             },
 
           decoration: InputDecoration(
+
+            suffixIcon: Column(
+              children: [
+                Tooltip(
+                    message:
+                    widget.input.lastChangeDate.toAmericanDisplay()
+                    ,
+                    child: Icon(Icons.info)),
+                InkWell(
+                  onTap: (){
+                    context.read<NotesBloc>().add(
+                      NotesDeleteEvent( widget.input,
+                      )
+                    );
+                  },
+                  child: Icon(
+                    Icons.delete
+                  ),
+                ),
+              ],
+            ),
               border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
             borderSide: BorderSide(

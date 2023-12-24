@@ -50,7 +50,9 @@ class MyApp extends StatelessWidget {
             create: (context) => HomeBloc(),
            ),
         BlocProvider(
-            create: (context) => NotesBloc(),
+            create: (context) => NotesBloc()..add(
+              NotesLoadEvent()
+            ),
            ),
         BlocProvider(
             create: (context) => StackedViewsBloc(),

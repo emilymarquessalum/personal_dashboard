@@ -6,7 +6,7 @@ class Note {
 
   final String noteName;
 
-  final String noteContent;
+  String noteContent;
 
   final DateTime lastChangeDate;
 
@@ -17,5 +17,22 @@ class Note {
     required this.noteContent,
     required this.lastChangeDate,
   });
+
+  static Note fromJson(e) {
+    return Note(
+      noteName: e['noteName'],
+      noteContent: e['noteContent'],
+      lastChangeDate: DateTime.parse(e['lastChangeDate']),
+    );
+  }
+
+
+  toJson() {
+    return {
+      "noteName": noteName,
+      "noteContent": noteContent,
+      "lastChangeDate": lastChangeDate.toIso8601String(),
+    };
+  }
 
 }

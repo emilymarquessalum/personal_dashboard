@@ -5,20 +5,16 @@ import 'package:flutter/material.dart';
 import 'package:personal_dashboard/shared/stacked_view/stacked_view_controller.dart';
 import 'package:provider/provider.dart';
 
-class MDIWindow {
-
-  final String title;
-
-  MDIWindow({
-    required this.title,
-  });
-}
 
 class MDIWindowWidget extends StatefulWidget {
   final String title;
+  final Widget? child;
+
+  final double? height;
 
 
-  const MDIWindowWidget({super.key, required this.title,});
+  const MDIWindowWidget({super.key, required this.title, this.child,
+  this.height,});
 
 
 
@@ -36,7 +32,9 @@ class _MDIWindowWidgetState extends State<MDIWindowWidget> {
   void initState() {
     super.initState();
     position = Offset(50.0, 50.0);
-    size = Size(200.0, 150.0);
+    size = Size(200.0,
+        widget.height ??
+        150.0);
   }
 
   @override
@@ -119,7 +117,7 @@ class _MDIWindowWidgetState extends State<MDIWindowWidget> {
                       child: Container(
                         padding: EdgeInsets.all(8.0),
                         child: Center(
-                          child: Text('Content goes here'),
+                          child: widget.child ?? Container(),
                         ),
                       ),
                     ),

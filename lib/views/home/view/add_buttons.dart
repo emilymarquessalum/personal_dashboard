@@ -2,6 +2,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:styled_widget/styled_widget.dart';
 
 class AddButton extends StatelessWidget {
   final Function() add;
@@ -9,17 +10,23 @@ class AddButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+
+
     return ElevatedButton(
         onPressed: add,
         style: Theme.of(context).elevatedButtonTheme.style?.copyWith(
           side: MaterialStateProperty.all(
             BorderSide(
               color: Colors.white,
-              width: 2,
+              width: 3,
             ),
           ),
         ),
-        child: Text("+"));
+        child: Text("+")).clipOval().boxShadow(
+      blurRadius: 50,
+      color: Colors.black87
+    );
   }
 }
 

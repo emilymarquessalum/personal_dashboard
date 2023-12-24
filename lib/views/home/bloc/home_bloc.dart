@@ -53,6 +53,9 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
     });
 
+    on<HomeCancelAddLinkEvent>((event, emit) {
+      emit(HomeInitialState());
+    });
 
 
     loadLinks();
