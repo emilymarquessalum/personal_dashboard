@@ -6,6 +6,7 @@ import 'package:personal_dashboard/routes/router.dart';
 import 'package:personal_dashboard/shared/stacked_view/stacked_views_bloc.dart';
 import 'package:personal_dashboard/views/home/bloc/home_bloc.dart';
 import 'package:personal_dashboard/views/home/home_router.dart';
+import 'package:personal_dashboard/views/home/page_structures/bloc/page_structures_bloc.dart';
 import 'package:personal_dashboard/views/home/view/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -38,10 +39,15 @@ void main() async {
 
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key, required this.appRouter,});
+  MyApp({super.key, required this.appRouter,});
   final GoRouter appRouter;
 
   // This widget is the root of your application.
+  //
+
+
+  final PageStructuresBloc structuresBloc = PageStructuresBloc();
+
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -57,6 +63,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(
             create: (context) => StackedViewsBloc(),
            ),
+        BlocProvider.value(value: structuresBloc),
 
       ],
       child: MaterialApp.router(
