@@ -49,6 +49,11 @@ class WheelOfLifeView extends StatelessWidget {
           ),
           WheelOfLifeValuesForm(),
           WheelOfLifeFocusedItems(),
+
+          Text("What makes sense in your life, right now?"),
+
+          Text("What doesnt make sense in your life, right now?"),
+
         ],
       ),
     );
