@@ -53,7 +53,9 @@ class WheelOfLifeView extends StatelessWidget {
           Text("What makes sense in your life, right now?"),
 
           Text("What doesnt make sense in your life, right now?"),
+ Text("Be cooperative, Be firm, Be forgiving, Be honest"),
 
+          Text("[insert path cards here]"),
         ],
       ),
     );

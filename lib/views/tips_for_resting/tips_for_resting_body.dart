@@ -13,6 +13,23 @@ class TipsForRestingBody extends StatelessWidget {
     return Column(
       children: [
 
+        Text("DopaMenu"),
+
+        Text(
+          '''
+          entrées - exciting/fulfilling activities
+desserts - overdone go tos
+appetizers - quick dopamine/low effort
+sides - things to add to activities
+
+specials - occaisonal high dopamime things (temporarily omit unrealistic ones)
+
+BONUS:
+
+- prep your surroundings by setting up what you need to start activities (decrease steps)
+- set barriers for unwanted desserts (increase steps)
+          '''
+        ),
 
         Text(
           '''
